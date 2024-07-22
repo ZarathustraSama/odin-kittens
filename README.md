@@ -1,0 +1,2 @@
+# Odin Kittens
+This is a straightforward and simple project to get a quick feel on APIs without using external ones as per TOP's specifications [here](https://www.theodinproject.com/lessons/ruby-on-rails-kittens-api).
