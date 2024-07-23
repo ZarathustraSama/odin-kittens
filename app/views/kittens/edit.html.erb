@@ -1,0 +1,13 @@
+<h1>Modify the kitten</h1>
+If you want to change some of the details of your kitten, this is the place!
+<br /><br />
+<%= render "layouts/kitten_form" do %>
+  <%= hidden_field_tag 'id', @kitten.id %>
+<% end %>
+<br /><br />
+<%= form_with model: @kitten, url: kittens_path, method: :delete  do |form| %>
+  <%= form.hidden_field :id, :value => @kitten.id %>
+  <%= form.submit "Delete" %>
+<% end %>
+
+<%= render "layouts/flash" %>

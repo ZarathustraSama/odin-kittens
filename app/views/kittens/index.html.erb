@@ -1,2 +1,28 @@
-<h1>Kittens#index</h1>
-<p>Find me in app/views/kittens/index.html.erb</p>
+<h1>Kittens</h1>
+<br />
+<% if @kittens.any? %>
+  <ul>
+    <% @kittens.each do |k| %>
+      <div>
+        <%= link_to "Kitten number #{k.id}", "kittens/#{k.id}" %><br />
+        Name: <%= k.name %><br />
+        Age: <%= k.age %><br />
+        Cuteness: <%= k.cuteness %><br />
+        Softness: <%= k.softness %><br />
+        <%= form_with model: @kitten, url: "kittens/#{k.id}", method: :delete  do |form| %>
+          <%= form.hidden_field :id, :value => k.id %>
+          <%= form.submit "Delete" %>
+        <% end %>
+        <br />
+        <%= link_to "Edit", edit_kitten_path(k.id) %>
+        <br /><br />
+      </div>
+    <% end %>
+  </ul>
+<% else %>
+  No kittens :(
+<% end %>
+<br /><br />
+<%= link_to "New Kitten", new_kitten_path %>
+
+<%= render "layouts/flash" %>

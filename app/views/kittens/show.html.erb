@@ -1,2 +1,16 @@
-<h1>Kittens#show</h1>
-<p>Find me in app/views/kittens/show.html.erb</p>
+<h1><%= @kitten.name.capitalize %></h1>
+
+Age: <%= @kitten.age %><br />
+Cuteness: <%= @kitten.cuteness %><br />
+Softness: <%= @kitten.softness %><br /><br />
+
+<%= form_with model: @kitten, url: kittens_path(@kitten.id), method: :delete  do |form| %>
+  <%= form.hidden_field :id, :value => @kitten.id %>
+  <%= form.submit "Delete" %>
+<% end %>
+
+<br /><br />
+
+<%= link_to "Go back", root_path %>
+
+<%= render "layouts/flash" %>
